@@ -1,0 +1,11 @@
+{
+  "name": "sixth-week-project",
+  "version": "1.0.0",
+  "description": "//current work: // -- everything should be set up except for creation of table models. Will wait for logic to dictate what tables need to be created // -- next step is to whiteboard to breakdown steps",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
