@@ -1,14 +1,33 @@
 
+
+***Logic for login and sessions.
+
+If user is 
+
+
+
+
+
 ***CURRENT TABLE ARRANGEMENT:
-gabble=# SELECT * FROM users;
- id | username | password | createdAt | updatedAt
-----+----------+----------+-----------+-----------
-(0 rows)
+id |     name      |         createdAt          |         updatedAt
+----+---------------+----------------------------+----------------------------
+ 1 | Petunia       | 2017-07-01 16:40:17.849-04 | 2017-07-01 16:40:17.849-04
+ 2 | Dotty McCloud | 2017-07-01 16:40:32.94-04  | 2017-07-01 16:40:32.94-04
+ 3 | Tabitha       | 2017-07-01 16:41:07.445-04 | 2017-07-01 16:41:07.445-04
+ 4 | Mrs. Pibb     | 2017-07-01 16:41:17.416-04 | 2017-07-01 16:41:17.416-04
+ 5 | Trisha        | 2017-07-01 16:41:25.965-04 | 2017-07-01 16:41:25.965-04
+(5 rows)
+
 
 gabble=# SELECT * FROM posts;
- id | title | body | createdAt | updatedAt | userId | likeId
-----+-------+------+-----------+-----------+--------+--------
-(0 rows)
+id |      title       |                                                  body                                                  |         createdAt          |         updatedAt          | userId
+----+------------------+--------------------------------------------------------------------------------------------------------+----------------------------+----------------------------+--------
+6 | OMG              | Petunia, you have the most beautiful toe-feathers!!                                                    | 2017-07-01 16:51:54.799-04 | 2017-07-01 16:51:54.799-04 |      2
+7 | Squirrels        | I don't know if anybody noticed, but the squirrels are back and they've eaten half my breakfast.       | 2017-07-01 16:53:43.132-04 | 2017-07-01 16:53:43.132-04 |      5
+8 | out of water     | if you're the one to finish the water, please refill it...                                             | 2017-07-01 16:54:29.281-04 | 2017-07-01 16:54:29.281-04 |      1
+9 | squirrels again! | I was just minding my own business, taking a dirt bath, and that damn squirrel up and stole my dinner! | 2017-07-01 16:55:11.358-04 | 2017-07-01 16:55:11.358-04 |      5
+10 | COMPOST          | COMPOST COMPOST COMPOST HERE COMES THE COMPOST RUN AS FAST AS YOU CAN GET THE COMPOST                  | 2017-07-01 16:56:05.455-04 | 2017-07-01 16:56:05.455-04 |      2
+(5 rows)
 
 gabble=# SELECT * FROM likes;
  id | tile | createdAt | updatedAt | userId | postId

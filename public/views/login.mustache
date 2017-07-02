@@ -7,10 +7,20 @@
   </head>
   <body>
 
-<h1>{{title}}</h1>
+  <h1>Here's some stuff, for sure</h1>
 
+  <div class="">
 
+    <ul>
+      {{#user}}
+      <li>{{name}}</li>
+        {{#posts}}
+      <li>{{body}}</li>
+        {{/posts}}
+      {{/user}}
+    </ul>
 
+  </div>
 
 
 

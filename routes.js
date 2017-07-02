@@ -29,10 +29,65 @@ router.get('/', function(res, req){
   }
 })
 
-// login page
-router.get('/login', function(res, req){
-  console.log("User accesses '/login'");
-  req.render('login.mustache', { title : "login page!"})
-})
 
+
+
+
+// login page
+
+
+
+// v v v this works. If login.mustache has ...
+/*   <div class="">
+
+    <ul>
+      {{#user}}
+      <li>{{name}}</li>
+        {{#posts}}
+      <li>{{body}}</li>
+        {{/posts}}
+      {{/user}}
+    </ul>
+
+  </div>
+
+  */
+
+  //this returns the user name and her comments!
+
+// router.get('/login', function(res, req){
+//   console.log("User accesses '/login'");
+//   models.user.findOne({
+//     where: {id: 2},
+//     include: [
+//       {
+//         model: models.post,
+//         as: 'posts'
+//       }
+//     ]
+//   }).then(function(user){
+//       console.log(user.posts);
+//       req.render('login.mustache', { user : user })
+//   })
+//
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
 module.exports = router;
+
+
+
+//

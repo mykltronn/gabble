@@ -30,11 +30,22 @@ app.use(session({
 
 //_________________________________________________________________________
 
-models.user.findOne({
-  where: id == 1,
-}.then(function(user){
-  models.user.name = "Petunia"
-}))
+// models.user.findOne(
+//   {
+//   where: {id : 1}
+//   }
+//     ).then(function(user){
+//           models.user.name = "Petunia";
+//           console.log(models.user.name);
+// })
+
+// models.user.findById(1).then(function(user){
+//   const name = models.user.build({
+//     name: "Petunia"
+//   })
+//   name.save();
+// })
+
 
 // const like = models.like.build({
 //   userId: 3,
