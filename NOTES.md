@@ -106,9 +106,20 @@ else{}
 
 
 
+1
+Petunia
 
+2
+Dotty McCloud
 
+3
+Tabitha
 
+4
+Mrs. Pibb
+
+5
+Trisha
 
 //
 
@@ -150,5 +161,3 @@ return queryInterface.bulkInsert('Post', [
 
   "article on ux design versus product design"
   -- -- “Design thinking is neither art nor science nor religion. It is the capacity, ultimately, for integrative thinking.”
-
-  

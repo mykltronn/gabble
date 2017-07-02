@@ -28,6 +28,39 @@ app.use(session({
   saveUninitialized: true
 }));
 
+//_________________________________________________________________________
+
+models.user.findOne({
+  where: id == 1,
+}.then(function(user){
+  models.user.name = "Petunia"
+}))
+
+// const like = models.like.build({
+//   userId: 3,
+//   postId: 1
+// })
+//
+// like.save()
+
+
+//_________________________________________________________________________
+
+//finds a like and its associated comment
+// models.like.findOne({
+//   include: [
+//     {
+//       model: models.post,
+//       as: 'post'
+//     }
+//   ]
+//     }).then(function(like){
+//         console.log(like);
+// })
+
+
+
+
 
 app.use(routes);
 
