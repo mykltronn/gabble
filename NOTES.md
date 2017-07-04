@@ -2,7 +2,15 @@
 
 ***Logic for login and sessions.
 
-If user is 
+User can either login, or create a new account. (If I want to add cookies, /login can check for cookie containing user and password)
+
+login and create forms can exist on same route, possibly. Would it be worth it? What would the form look like...
+
+probably best just to route to /newuser for user creation
+
+user login form posts to where? Back to /login to check the data and then redirect to '/'?
+
+
 
 
 

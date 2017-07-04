@@ -16,21 +16,24 @@
       </nav>
     </header>
 
-  <h1>Please log in</h1>
+
+    
+<h1>Create new user</h1>
 
 
-<form class="login" action="/login" method="post">
-    <label for="username">username</label>
-    <input type="text" name="username" autofocus="autofocus">
 
-    <label for="password">password</label>
-    <input type="password" name="password">
+<form class="new-user-form" action="/newuser" method="post">
+  <label for="username">username</label>
+  <input type="text" name="username">
 
-    <button type="submit" name="button">submit</button>
-    {{err}}
+  <label for="password">password</label>
+  <input type="password" name="password" value="">
+
+  <label for="confirmpassword">confirm password</label>
+  <input type="password" name="confirmpassword">
+
+  <button type="submit" name="new-user-submit">create user</button>
 </form>
-
-
 
 
 

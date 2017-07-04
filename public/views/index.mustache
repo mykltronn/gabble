@@ -7,7 +7,62 @@
   </head>
   <body>
 
-<h1>{{title}}</h1>
+    <header>
+      <h1>CLUCK</h1>
+      <nav>
+        <li><a href="/">home</a></li>
+        <li><a href="/newuser">signup</a></li>
+        <li><a href="/login">login</a></li>
+        <li><a href="/logout">logout</a></li>
+      </nav>
+    </header>
+
+
+{{#authenticated}}
+<h1>Welcome, {{currentUser}}</h1>
+<div class="newpost">
+  <form id="newpost" action="/" method="post">
+    <h2>New post</h2><br>
+    <label for="postTitle">title</label>
+    <input type="text" name="postTitle"><br>
+
+    <textarea name="postBody" rows="2" cols="80" placeholder="write your comment here"></textarea>
+    <button type="submit" name="new-post-submit"></button>
+  </form>
+</div>
+{{/authenticated}}
+{{^authenticated}}
+  <h2>please log in to post</h2>
+{{/authenticated}}
+
+
+
+  {{#user}}
+  <div class="posts">
+    {{#posts}}
+    <ul>
+      <li>{{name}}</li>
+      <li>{{title}}</li>
+      <li>{{body}}</li>
+
+      <ul>
+        {{#likes}}
+        <li>{{user.name}} likes this post</li>
+        {{/likes}}
+      </ul>
+
+      <form class="like-button" action="/" method="post">
+
+        <input hidden="hidden" type="text" name="postItteration" value="{{id}}">
+        <button type="submit" name="like">like</button>
+
+      </form>
+    </ul>
+    {{/posts}}
+  </div>
+  {{/user}}
+
+
 
 
 

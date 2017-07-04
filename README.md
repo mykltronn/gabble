@@ -1,9 +1,33 @@
 
 //current work:
-// -- everything should be set up except for creation of table models. Will wait for logic to dictate what tables need to be created
-// -- next step is to whiteboard to breakdown steps
 
 
+PHASE ONE
+the CORE functionality:
+-- login/store authentication    *
+-- create new user      *
+-- create new post      *
+-- like a post      *
+-- delete post      *
+
+
+PHASE TWO
+VALIDATION and extended functionality
+-- check username and password against DB        *
+-- check if username already exists              
+-- check password against password-confirm
+-- check new post for a title and body and check length of both
+-- user can only like a post once per postId
+-- user can only delete post if userId = activeUser
+-- display NUMBER of likes
+
+PHASE THREE
+-- organize posts (newest first)
+--[ modularize code
+-- -- app.js should already be clean, but checkout
+-- -- routes.js needs to be clean routes with minimal fuss, but scope will be an issue
+-- -- create a functions.js or something to store functions and export
+-- style that shit, maybe add scripts for neatness
 
 
 
