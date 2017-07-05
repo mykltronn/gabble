@@ -69,20 +69,32 @@ router.get('/', function(req, res){
           }]
         }]
     }).then(function(userInfo){
+      console.log(" v v v v                                    v v v v ");
+      console.log(" v v v v                                    v v v v ");
+      console.log(" v v v v                                    v v v v ");
+      console.log(" v v v v                                    v v v v ");
+      console.log(" v v v v                                    v v v v ");
+      console.log(" v v v v Here's the info you're looking for v v v v ");
+      for(i=0; i < userInfo.length; i++){
+        console.log("number of posts by user: " + userInfo[i].posts.length);
+        for(j=0; j < userInfo[i].posts.length; j++){
+          console.log("likes per post hopefully?" + userInfo[i].posts[j].likes);
+        }
+      }
 
       // here's the sticky bit. Line 126 successfully logs to postId of the post that the delete button should be deleting, but I want the DELETE button to only display if that post belogns to activeUser. So somehow I have to compare activeUser against the owner of whichever post itteration is being displayed in index. The problem is, that loop only exists in mustache form! Not here! As far as I know the only way I can compare a value inside this file against someting dynamically generated client side is by taking a user POST and parsing the body for a form... maybe I should read bodyparser documentation to see if there's more it can do. --- after reading a BIT of bodyparser docs it looks like almost any part of the body can be parsed, but it seems to come particularly from a POST... I'll have to test if this is true. The only question then, is how do I idenfity the part of req.body I want to select? req.body.classname even? Because then I can select the value of <li>{{name}}</li>.
+      // it's the same problem with the likes number.
 
 
       models.user.findById(req.session.activeUser).then(function(user){
 
-
-        console.log(req.session.bodyErr + " and " + req.session.titleErr);
-
         var owner = true;
+
         if(user){
           console.log('Current active user is ' + user.name);
           res.render('index', {
             user: userInfo,
+            likeNum: 3,
             currentUser: user.name,
             authenticated: req.session.authenticated,
             postErr: req.session.postErr,
@@ -92,6 +104,7 @@ router.get('/', function(req, res){
         else {
           res.render('index', {
             user: userInfo,
+            likeNum: 3,
             authenticated: req.session.authenticated,
             postErr: req.session.postErr,
             owner: owner

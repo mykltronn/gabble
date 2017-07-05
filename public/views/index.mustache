@@ -8,7 +8,7 @@
   <body>
 
     <header>
-      <h1>CLUCK</h1>
+      <h1>Clucker</h1>
       <nav>
         <li><a href="/">home</a></li>
         <li><a href="/newuser">signup</a></li>
@@ -18,15 +18,15 @@
     </header>
 
 {{#authenticated}}
-<h1>Welcome, {{currentUser}}</h1>
+<h2>Welcome, {{currentUser}}</h2>
   <div class="newpost">
     <form id="newpost" action="/" method="post">
-      <h2>New post</h2><br>
+      <h3>New cluck</h3><br>
       <label for="postTitle">title</label>
       <input type="text" name="postTitle"><br>
 
-      <textarea name="postBody" rows="2" cols="80" maxlength="141" placeholder="write your comment here"></textarea>
-      <button type="submit" name="new-post-submit"></button>
+      <textarea name="postBody" rows="2" cols="80" maxlength="141" placeholder="write your comment here"></textarea><br>
+      <button type="submit" name="new-post-submit">cluck!</button>
     </form>
   </div>
 
@@ -42,7 +42,7 @@
 
 {{^authenticated}}
 <h1>Welcome.</h1>
-<h2>Please log in to post</h2>
+<h2>Please log in to send a cluck</h2>
 {{/authenticated}}
 
 
@@ -52,12 +52,17 @@
     {{#posts}}
     <ul>
       <li>{{name}}</li>
+      <li>{{createdAt}}</li>
       <li>{{title}}</li>
       <li>{{body}}</li>
 
+      {{#likeNum}}
+      <li>{{.}}</li>
+      {{/likeNum}}
+
       <ul>
         {{#likes}}
-        <li>{{user.name}} likes this post</li>
+        <li>{{user.name}} liked this cluck on {{updatedAt}}</li>
         {{/likes}}
       </ul>
 
