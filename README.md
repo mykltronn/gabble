@@ -19,9 +19,10 @@ VALIDATION and extended functionality:
 -- when new user is created, the user is also authenticated   []
 -- check new post for a title and body and check length of both   [*]
 -- user can only like a post once per postId        []
--- user can only delete post if userId = activeUser       []
--- homepage displays without authentication but doesn't allow post   []
+-- user can only delete post if posts userId = activeUser       []
+-- homepage displays without authentication but doesn't allow post   [*]
 -- display NUMBER of likes        []
+-- display date of modify to posts and likes      []
 
 PHASE THREE:
 FINISHING touches:

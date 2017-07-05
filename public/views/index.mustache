@@ -17,7 +17,6 @@
       </nav>
     </header>
 
-
 {{#authenticated}}
 <h1>Welcome, {{currentUser}}</h1>
   <div class="newpost">
@@ -42,7 +41,8 @@
 
 
 {{^authenticated}}
-  <h2>please log in to post</h2>
+<h1>Welcome.</h1>
+<h2>Please log in to post</h2>
 {{/authenticated}}
 
 
@@ -63,12 +63,12 @@
 
       <form class="like-button" action="/" method="post">
         <input hidden="hidden" type="text" name="postItteration" value="{{id}}">
-        <button type="submit" name="like">like</button>
+        {{#authenticated}}<button type="submit" name="like">like</button>{{/authenticated}}
       </form>
 
       {{#owner}}
       <form class="" action="/" method="post">
-        <button type="submit" name="deletepost" value="{{id}}">delete</button>
+        {{#authenticated}}<button type="submit" name="deletepost" value="{{id}}">delete</button>{{/authenticated}}
       </form>
       {{/owner}}
     </ul>

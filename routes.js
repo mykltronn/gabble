@@ -50,11 +50,11 @@ function authenticate(req, res, username, pass, callback){
 //            routes
 
 // root
-//
 router.get('/', function(req, res){
   console.log("User accesses '/'");
   // user first visits site
-  if(req.session && req.session.authenticated){
+  //if(req.session && req.session.authenticated){
+
     models.user.findAll({
       include: [{
           model: models.post,
@@ -75,26 +75,35 @@ router.get('/', function(req, res){
 
       models.user.findById(req.session.activeUser).then(function(user){
 
-        console.log('Current active user is ' + user.name);
+
         console.log(req.session.bodyErr + " and " + req.session.titleErr);
 
         var owner = true;
-
-        res.render('index', {
-          user: userInfo,
-          currentUser: user.name,
-          authenticated: req.session.authenticated,
-          postErr: req.session.postErr,
-          owner: owner
-        })
+        if(user){
+          console.log('Current active user is ' + user.name);
+          res.render('index', {
+            user: userInfo,
+            currentUser: user.name,
+            authenticated: req.session.authenticated,
+            postErr: req.session.postErr,
+            owner: owner
+          })
+        }
+        else {
+          res.render('index', {
+            user: userInfo,
+            authenticated: req.session.authenticated,
+            postErr: req.session.postErr,
+            owner: owner
+          })
+        }
       })
     })
-  }
-
+  /*}
   else {
     console.log("user redirected to login: lack of credentials");
     res.redirect('/login')
-  }
+  } */
 })
 
 // need to add validation here
@@ -276,7 +285,7 @@ router.post('/newuser', function(req, res){
 router.get('/logout', function(req, res){
   console.log("user session destroyed");
   req.session.destroy();
-  res.redirect('/login');
+  res.redirect('/');
 })
 
 

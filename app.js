@@ -11,6 +11,12 @@ const routes = require("./routes.js");
 
 const app = express();
 
+app.use(session({
+  secret: 'donut floaty',
+  resave: false,
+  saveUninitialized: true
+}));
+
 app.use(express.static('public'));
 app.use(express.static('scripts'));
 
@@ -22,11 +28,7 @@ app.use(bodyParser.urlencoded({ extended : false }));
 app.use(validator());
 app.use(morgan('dev'));
 
-app.use(session({
-  secret: 'donut floaty',
-  resave: false,
-  saveUninitialized: true
-}));
+
 
 //_________________________________________________________________________
 
