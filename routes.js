@@ -1,4 +1,4 @@
-// current working problem line 60 routes.js -- visit http://docs.sequelizejs.com/manual/tutorial/querying.html   and see "Order" section to check on current trajectory......  
+// current working problem line 60 routes.js -- visit http://docs.sequelizejs.com/manual/tutorial/querying.html   and see "Order" section to check on current trajectory...... or https://stackoverflow.com/questions/36259532/sequelize-findall-sort-order-in-nodejs or https://stackoverflow.com/questions/36259532/sequelize-findall-sort-order-in-nodejs
 
 const express = require('express');
 const models = require("./models");

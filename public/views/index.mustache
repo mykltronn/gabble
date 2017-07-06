@@ -9,13 +9,14 @@
   <body>
 
     <header>
-      <h1>Clucker</h1>
-      <nav>
-        <li><a href="/">home</a></li>
-        <li><a href="/newuser">signup</a></li>
-        <li><a href="/login">login</a></li>
-        <li><a href="/logout">logout</a></li>
+
+      <nav class="nav-bar">
+        <li class="nav-item"><a href="/">home</a></li>
+        <li class="nav-item"><a href="/newuser">signup</a></li>
+        <li class="nav-item"><a href="/login">login</a></li>
+        <li class="nav-item"><a href="/logout">logout</a></li>
       </nav>
+      <h1 class="header-title">Clucker</h1>
     </header>
 
 {{#authenticated}}
@@ -42,7 +43,6 @@
 
 
 {{^authenticated}}
-<h1>Welcome.</h1>
 <h2>Please log in to send a cluck</h2>
 {{/authenticated}}
 
