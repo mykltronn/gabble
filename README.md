@@ -8,31 +8,38 @@ the CORE functionality:
 -- create new user      [*]
 -- create new post      [*]
 -- like a post      [*]
--- delete post      []
+-- delete post      [*]
 
 
 PHASE TWO
 VALIDATION and extended functionality:
+
+
+-- user can only delete post if posts userId = activeUser       []
+
 -- check username and password against DB        [*]
 -- check if username already exists              [*]
 -- check password against password-confirm          [*]
--- when new user is created, the user is also authenticated   []
 -- check new post for a title and body and check length of both   [*]
--- user can only like a post once per postId        []
--- user can only delete post if posts userId = activeUser       []
 -- homepage displays without authentication but doesn't allow post   [*]
--- display NUMBER of likes        []
--- display date of modify to posts and likes      []
+-- display NUMBER of likes        [*]
+-- display date of modify to posts and likes      [*]
 
 PHASE THREE:
 FINISHING touches:
+
 -- organize posts (newest first)      []
+-- clean up post and like date and time   []
 --[ modularize code               []
 -- -- app.js should already be clean, but checkout      []
 -- -- routes.js needs to be clean routes with minimal fuss, but scope will be an issue  []
 -- -- create a functions.js or something to store functions and export    []
--- style that shit, maybe add scripts for neatness    []
+-- style that shit, maybe add scripts for coolness    []
 
+PHASE FOUR:
+Hard Mode:
+-- user can only like a post once per postId        []
+-- when new user is created, the user is also authenticated   []
 
 
 

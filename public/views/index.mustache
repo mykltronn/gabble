@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://use.fontawesome.com/277ac4a1c3.js"></script>
     <link rel="stylesheet" href="./css/styles.css">
     <meta charset="utf-8">
     <title>Gabble</title>
@@ -55,10 +56,9 @@
       <li>{{createdAt}}</li>
       <li>{{title}}</li>
       <li>{{body}}</li>
-
-      {{#likeNum}}
-      <li>{{.}}</li>
-      {{/likeNum}}
+      {{#likes.length}}
+      <li><i class="fa fa-thumbs-o-up" aria-hidden="true"> {{.}}</i></li>
+      {{/likes.length}}
 
       <ul>
         {{#likes}}
@@ -73,7 +73,10 @@
 
       {{#owner}}
       <form class="" action="/" method="post">
-        {{#authenticated}}<button type="submit" name="deletepost" value="{{id}}">delete</button>{{/authenticated}}
+        {{#authenticated}}
+        <input class="hide-me" name="userId" value="{{userId}}">
+        <button type="submit" name="deletepost" value="{{id}}">delete</button>
+        {{/authenticated}}
       </form>
       {{/owner}}
     </ul>

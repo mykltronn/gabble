@@ -1,4 +1,4 @@
-// current working problem line 73 routes.js
+// current working problem line 60 routes.js -- visit http://docs.sequelizejs.com/manual/tutorial/querying.html   and see "Order" section to check on current trajectory......  
 
 const express = require('express');
 const models = require("./models");
@@ -51,11 +51,13 @@ function authenticate(req, res, username, pass, callback){
 
 // root
 router.get('/', function(req, res){
+
   console.log("User accesses '/'");
   // user first visits site
   //if(req.session && req.session.authenticated){
 
     models.user.findAll({
+      // order: [users, 'createdAt', 'DESC'],
       include: [{
           model: models.post,
           as: 'posts',
@@ -69,18 +71,21 @@ router.get('/', function(req, res){
           }]
         }]
     }).then(function(userInfo){
-      console.log(" v v v v                                    v v v v ");
-      console.log(" v v v v                                    v v v v ");
-      console.log(" v v v v                                    v v v v ");
-      console.log(" v v v v                                    v v v v ");
-      console.log(" v v v v                                    v v v v ");
-      console.log(" v v v v Here's the info you're looking for v v v v ");
-      for(i=0; i < userInfo.length; i++){
-        console.log("number of posts by user: " + userInfo[i].posts.length);
-        for(j=0; j < userInfo[i].posts.length; j++){
-          console.log("likes per post hopefully?" + userInfo[i].posts[j].likes);
-        }
-      }
+      console.log(" v v v v               v       v            v v v v ");
+      console.log(" v v v v                v     v             v v v v ");
+      console.log(" v v v v                 v   v              v v v v ");
+      console.log(" v v v v                  v v               v v v v ");
+      console.log(" v v v v                   v                v v v v ");
+      console.log(" v v v v here's the info you're looking for v v v v ");
+      console.log(req.body.postBody);
+      // console.log(userInfo);
+
+      // for(i=0; i < userInfo.length; i++){
+      //   console.log("number of posts by user: " + userInfo[i].posts.length);
+      //   for(j=0; j < userInfo[i].posts.length; j++){
+      //     console.log("likes per post!!: " + userInfo[i].posts[j].likes.length);
+      //   }
+      // }
 
       // here's the sticky bit. Line 126 successfully logs to postId of the post that the delete button should be deleting, but I want the DELETE button to only display if that post belogns to activeUser. So somehow I have to compare activeUser against the owner of whichever post itteration is being displayed in index. The problem is, that loop only exists in mustache form! Not here! As far as I know the only way I can compare a value inside this file against someting dynamically generated client side is by taking a user POST and parsing the body for a form... maybe I should read bodyparser documentation to see if there's more it can do. --- after reading a BIT of bodyparser docs it looks like almost any part of the body can be parsed, but it seems to come particularly from a POST... I'll have to test if this is true. The only question then, is how do I idenfity the part of req.body I want to select? req.body.classname even? Because then I can select the value of <li>{{name}}</li>.
       // it's the same problem with the likes number.
@@ -91,10 +96,11 @@ router.get('/', function(req, res){
         var owner = true;
 
         if(user){
+
           console.log('Current active user is ' + user.name);
+          console.log(req.session.postErr);
           res.render('index', {
             user: userInfo,
-            likeNum: 3,
             currentUser: user.name,
             authenticated: req.session.authenticated,
             postErr: req.session.postErr,
@@ -104,10 +110,7 @@ router.get('/', function(req, res){
         else {
           res.render('index', {
             user: userInfo,
-            likeNum: 3,
             authenticated: req.session.authenticated,
-            postErr: req.session.postErr,
-            owner: owner
           })
         }
       })
@@ -125,12 +128,12 @@ router.get('/', function(req, res){
 // user posts new comment or like
 router.post('/', function(req, res){
   console.log("user POSTs to '/' ");
-  console.log(req.body.postItteration);
 
   // if there is a "like submission" then run this
   if(req.body.postItteration){
     console.log('...and POSTs a new like');
-    // var activeUser = 3 // this will be req.session.active at some point
+
+    // needing to validate likes
 
     console.log("like added by userId " + req.session.activeUser + ", to postId " + req.body.postItteration);
     const newLike = models.like.build(
@@ -145,8 +148,20 @@ router.post('/', function(req, res){
   }
   // delete post if user is owner
   else if (req.body.deletepost) {
-    console.log("Post that will be deleted is postId: " + req.body.deletepost);
-    res.redirect('/');
+    console.log("userId is: " + req.body.userId + " and activeUser is: " + req.session.activeUser);
+    if(req.body.userId == req.session.activeUser){
+      console.log("Post that will be deleted is postId: " + req.body.deletepost);
+      models.post.destroy({
+        where: {id: req.body.deletepost}
+      }).then(function(userIdOfPostApparently){
+        console.log("The following was deleted: " + req.body.deletepost);
+        res.redirect('/');
+      })
+    }
+    else {
+      // req.session.postErr = "That's not yours to delete!!"
+      res.redirect('/')
+    }
   }
 
   // otherwise, build new post
@@ -160,13 +175,10 @@ router.post('/', function(req, res){
 
     if(req.validationErrors()) {
       req.session.postErr = req.validationErrors();
-      // req.session.bodyErr = "post must be fewer than 140 characters";
       console.log('error logged');
       res.redirect('/')
     }
     else {
-      // var activeUser = 3; // this eventually is defined in session
-
       var newTitle = req.body.postTitle
       var newBody = req.body.postBody
 
@@ -177,7 +189,6 @@ router.post('/', function(req, res){
       })
       newPost.save();
     }
-
     res.redirect('/');
   }
 })
@@ -207,7 +218,6 @@ router.post('/login', function(req, res){
   authenticate(req, res, username, pass, callback);
 
   function callback(req, res, username, pass){
-    // console.log("point FOUR logs " + req.session.authenticated + " and " + req.session.activeUser);
     if(req.session && req.session.authenticated){
       console.log('user successfully logged in');
       res.redirect('/')
@@ -217,15 +227,12 @@ router.post('/login', function(req, res){
       res.redirect('/login')
     }
   }
-
 })
 
 
 
 // login page
-
 // create new user
-// possibly use same page as index or login but dynamically change form like World-o-links
 router.get('/newuser', function(req, res){
   console.log("req.session.createErr reads in GET: " + req.session.createErr);
   if(!req.session.passErr){
@@ -243,7 +250,6 @@ router.get('/newuser', function(req, res){
               })
 })
 
-// v v v  this needs to validate user input
 router.post('/newuser', function(req, res){
   console.log('user POSTs to /newuser');
   models.user.findAll().then(function(users){
@@ -272,16 +278,6 @@ router.post('/newuser', function(req, res){
       })
       newUser.save();
       req.session.authenticated = true;
-      // have to access id of new user and store it in activeUser for '/' to render properly
-
-      // models.user.findOne(
-      //   {
-      //     where: {name: newName}
-      //   }
-      // ).then(function(user){
-      //   req.session.activeUser = user.id
-      //   res.redirect('/');
-      // })
     }
     else {
       req.session.passErr = "passwords do not match!"
@@ -290,9 +286,6 @@ router.post('/newuser', function(req, res){
     }
   })
 })
-
-
-
 
 //logs out current user
 router.get('/logout', function(req, res){
@@ -303,7 +296,6 @@ router.get('/logout', function(req, res){
 
 
 module.exports = router;
-
 
 
 //
