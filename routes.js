@@ -133,7 +133,7 @@ router.post('/', function(req, res){
   if(req.body.postItteration){
     console.log('...and POSTs a new like');
 
-    // needing to validate likes 
+    // needing to validate likes
 
     console.log("like added by userId " + req.session.activeUser + ", to postId " + req.body.postItteration);
     const newLike = models.like.build(

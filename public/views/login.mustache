@@ -4,6 +4,7 @@
     <script src="https://use.fontawesome.com/277ac4a1c3.js"></script>
     <link rel="stylesheet" href="./css/styles.css">
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
     <link rel="shortcut icon" href="./images/favicon.ico">
     <title>Clucker!</title>
   </head>
@@ -24,15 +25,20 @@
         <div class="chicken-box"></div>
       </div>
 
-  <h1>Please log in</h1>
+
 
 
 <form class="login" action="/login" method="post">
-    <label for="username">username</label>
-    <input type="text" name="username" autofocus="autofocus">
+    <h1>Please log in</h1>
+    <div class="login-name">
+      <label for="username">username</label>
+      <input type="text" name="username" autofocus="autofocus"><br>
+    </div>
 
-    <label for="password">password</label>
-    <input type="password" name="password">
+    <div class="login-password">
+      <label for="password">password</label>
+      <input type="password" name="password"><br>
+    </div>
 
     <button type="submit" name="button">submit</button>
 </form>

@@ -3,6 +3,8 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  font-family: 'Oswald', sans-serif;
+  border: none;
 }
 
 a {
@@ -43,10 +45,8 @@ li {
 }
 
 .star-box {
-  /*margin: 50px 0px 50px 25vw;*/
   grid-column: 1 / 2;
   grid-row: 1 / 2;
-  /*position: absolute;*/
   background-image: url(/images/star.svg);
   height: 450px;
   width: 450px;
@@ -104,10 +104,90 @@ li {
 }
 
 .welcome {
+  display: block;
+  text-align: right;
+  margin: -80px 40px 80px 0px;
+  padding-right: 100px;
+
+}
+
+.posts>ul {
+  border: 2px solid lightgrey;
+  margin: 20px;
+  padding: 20px;
+}
+
+ul li {
+  padding: 5px;
+}
+
+li h3 {
+  margin: 10px;
+  font-size: 28px;
+}
+
+.title-label {
+
+}
+
+.title-input {
+
+}
+
+.body-input {
+
+}
+
+/*_____________________________*/
+
+.post {
+
+}
+
+.post-name {
 
 }
 
 
+.hide-me {
+  display: none;
+}
+
+.delete-button {
+
+}
+
+.login, .new-user-form{
+  text-align: left;
+  margin-top: -15%;
+  margin-left: 50px;
+}
+
+.login label, .new-user-form label {
+  margin-right: 10px;
+}
+
+.login input, .new-user-form input {
+  border-bottom: 2px solid black;
+  font-size: 20px;
+  padding: 5px 10px;
+  height: 40px;
+}
+
+.login button, .new-user-form button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+}
+
+.login-name {
+  margin: 10px;
+}
+
+
+.login-password {
+  margin: 10px;
+}
 /*
 .posts{
   width: 100%;

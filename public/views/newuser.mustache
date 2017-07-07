@@ -4,6 +4,7 @@
     <script src="https://use.fontawesome.com/277ac4a1c3.js"></script>
     <link rel="stylesheet" href="./css/styles.css">
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
     <link rel="shortcut icon" href="./images/favicon.ico">
     <title>Clucker!</title>
   </head>
@@ -27,21 +28,28 @@
 
 
 
-<h1>Create new user</h1>
+
 
 
 
 <form class="new-user-form" action="/newuser" method="post">
-  <label for="username">username</label>
-  <input type="text" name="username">
+  <h1>Create new user</h1>
+  <div class="login-name">
+    <label for="username">username</label>
+    <input type="text" name="username" autofocus><br>
+  </div>
 
-  <label for="password">password</label>
-  <input type="password" name="password" value="">
+  <div class="login-password">
+    <label for="password">password</label>
+    <input type="password" name="password" value=""><br>
+  </div>
 
-  <label for="confirmpassword">confirm password</label>
-  <input type="password" name="confirmpassword">
+  <div class="login-name">
+    <label for="confirmpassword">confirm password</label>
+    <input type="password" name="confirmpassword"><br>
+  </div>
 
-  <button type="submit" name="new-user-submit">create user</button>
+    <button type="submit" name="new-user-submit">create user</button>
 </form>
 <div class="new-user-errors">
   <p>{{createErr}}</p>

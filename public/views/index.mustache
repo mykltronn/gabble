@@ -4,6 +4,7 @@
     <script src="https://use.fontawesome.com/277ac4a1c3.js"></script>
     <link rel="stylesheet" href="./css/styles.css">
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
     <link rel="shortcut icon" href="./images/favicon.ico">
     <title>Clucker!</title>
   </head>
@@ -32,10 +33,10 @@
     <div class="newpost">
       <form id="newpost" action="/" method="post">
         <h3>New cluck</h3><br>
-        <label for="postTitle">title</label>
-        <input type="text" name="postTitle"><br>
+        <label class="title-label" for="postTitle">title</label>
+        <input class="title-input" type="text" name="postTitle"><br>
 
-        <textarea name="postBody" rows="2" cols="80" maxlength="141" placeholder="write your comment here"></textarea><br>
+        <textarea class="body-input" name="postBody" rows="2" cols="80" maxlength="141" placeholder="write your comment here"></textarea><br>
         <button type="submit" name="new-post-submit">cluck!</button>
       </form>
     </div>
@@ -51,7 +52,7 @@
 
 
   {{^authenticated}}
-  <h2 class="welcome">Wanna cluck? Login!</h2>
+    <h1 class="welcome">Wanna cluck? <a href="/login">Login!</a></h1>
   {{/authenticated}}
 
 
@@ -60,17 +61,17 @@
     <div class="posts">
     {{#posts}}
       <ul class="post">
-        <li>{{name}}</li>
-        <li>{{createdAt}}</li>
-        <li>{{title}}</li>
-        <li>{{body}}</li>
+        <li class="post-name">{{name}}, </li>
+        <span class="post-create-time">{{createdAt}}</span>
+        <li class="post-name">{{title}}</li>
+        <li class="post-body">{{body}}</li>
         {{#likes.length}}
-        <li><i class="fa fa-thumbs-o-up" aria-hidden="true"> {{.}}</i></li>
+        <li class="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"> {{.}}</i></li>
         {{/likes.length}}
 
-        <ul>
+        <ul class="likes-list">
           {{#likes}}
-          <li>{{user.name}} liked this cluck on {{updatedAt}}</li>
+          <li class="like-body">{{user.name}} liked this cluck on {{updatedAt}}</li>
           {{/likes}}
         </ul>
 
@@ -83,7 +84,7 @@
         <form class="" action="/" method="post">
           {{#authenticated}}
           <input class="hide-me" name="userId" value="{{userId}}">
-          <button type="submit" name="deletepost" value="{{id}}">delete</button>
+          <button class="delete-button" type="submit" name="deletepost" value="{{id}}">delete</button>
           {{/authenticated}}
         </form>
         {{/owner}}
