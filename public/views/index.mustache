@@ -4,7 +4,8 @@
     <script src="https://use.fontawesome.com/277ac4a1c3.js"></script>
     <link rel="stylesheet" href="./css/styles.css">
     <meta charset="utf-8">
-    <title>Gabble</title>
+    <link rel="shortcut icon" href="./images/favicon.ico">
+    <title>Clucker!</title>
   </head>
   <body>
 
@@ -16,74 +17,81 @@
         <li class="nav-item"><a href="/login">login</a></li>
         <li class="nav-item"><a href="/logout">logout</a></li>
       </nav>
-      <h1 class="header-title">Clucker</h1>
+
     </header>
 
-{{#authenticated}}
-<h2>Welcome, {{currentUser}}</h2>
-  <div class="newpost">
-    <form id="newpost" action="/" method="post">
-      <h3>New cluck</h3><br>
-      <label for="postTitle">title</label>
-      <input type="text" name="postTitle"><br>
+    <div class="big-box">
+      <div class="star-box"></div>
+      <div class="chicken-box"></div>
+    </div>
 
-      <textarea name="postBody" rows="2" cols="80" maxlength="141" placeholder="write your comment here"></textarea><br>
-      <button type="submit" name="new-post-submit">cluck!</button>
-    </form>
-  </div>
+<main class="mainbody">
+  {{#authenticated}}
+  <h2 class="welcome">Welcome, {{currentUser}}</h2>
 
-  <div class="post-errors">
-    <ul>
-      {{#postErr}}
-      <li>{{msg}}</li>
-      {{/postErr}}
-    </ul>
-  </div>
-{{/authenticated}}
+    <div class="newpost">
+      <form id="newpost" action="/" method="post">
+        <h3>New cluck</h3><br>
+        <label for="postTitle">title</label>
+        <input type="text" name="postTitle"><br>
 
+        <textarea name="postBody" rows="2" cols="80" maxlength="141" placeholder="write your comment here"></textarea><br>
+        <button type="submit" name="new-post-submit">cluck!</button>
+      </form>
+    </div>
 
-{{^authenticated}}
-<h2>Please log in to send a cluck</h2>
-{{/authenticated}}
-
-
-
-  {{#user}}
-  <div class="posts">
-    {{#posts}}
-    <ul>
-      <li>{{name}}</li>
-      <li>{{createdAt}}</li>
-      <li>{{title}}</li>
-      <li>{{body}}</li>
-      {{#likes.length}}
-      <li><i class="fa fa-thumbs-o-up" aria-hidden="true"> {{.}}</i></li>
-      {{/likes.length}}
-
+    <div class="post-errors">
       <ul>
-        {{#likes}}
-        <li>{{user.name}} liked this cluck on {{updatedAt}}</li>
-        {{/likes}}
+        {{#postErr}}
+        <li>{{msg}}</li>
+        {{/postErr}}
       </ul>
+    </div>
+  {{/authenticated}}
 
-      <form class="like-button" action="/" method="post">
-        <input hidden="hidden" type="text" name="postItteration" value="{{id}}">
-        {{#authenticated}}<button type="submit" name="like">like</button>{{/authenticated}}
-      </form>
 
-      {{#owner}}
-      <form class="" action="/" method="post">
-        {{#authenticated}}
-        <input class="hide-me" name="userId" value="{{userId}}">
-        <button type="submit" name="deletepost" value="{{id}}">delete</button>
-        {{/authenticated}}
-      </form>
-      {{/owner}}
-    </ul>
-    {{/posts}}
-  </div>
+  {{^authenticated}}
+  <h2 class="welcome">Wanna cluck? Login!</h2>
+  {{/authenticated}}
+
+
+
+    {{#user}}
+    <div class="posts">
+    {{#posts}}
+      <ul class="post">
+        <li>{{name}}</li>
+        <li>{{createdAt}}</li>
+        <li>{{title}}</li>
+        <li>{{body}}</li>
+        {{#likes.length}}
+        <li><i class="fa fa-thumbs-o-up" aria-hidden="true"> {{.}}</i></li>
+        {{/likes.length}}
+
+        <ul>
+          {{#likes}}
+          <li>{{user.name}} liked this cluck on {{updatedAt}}</li>
+          {{/likes}}
+        </ul>
+
+        <form class="like-button" action="/" method="post">
+          <input hidden="hidden" type="text" name="postItteration" value="{{id}}">
+          {{#authenticated}}<button type="submit" name="like">like</button>{{/authenticated}}
+        </form>
+
+        {{#owner}}
+        <form class="" action="/" method="post">
+          {{#authenticated}}
+          <input class="hide-me" name="userId" value="{{userId}}">
+          <button type="submit" name="deletepost" value="{{id}}">delete</button>
+          {{/authenticated}}
+        </form>
+        {{/owner}}
+      </ul>
+      {{/posts}}
+    </div>
   {{/user}}
-
+  </main>
 
 
 
