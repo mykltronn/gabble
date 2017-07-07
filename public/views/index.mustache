@@ -33,11 +33,14 @@
     <div class="newpost">
       <form id="newpost" action="/" method="post">
         <h3>New cluck</h3><br>
-        <label class="title-label" for="postTitle">title</label>
-        <input class="title-input" type="text" name="postTitle"><br>
+
+        <div class="newpost-title">
+          <label class="title-label" for="postTitle">title</label>
+          <input class="title-input" type="text" name="postTitle"><br>
+        </div>
 
         <textarea class="body-input" name="postBody" rows="2" cols="80" maxlength="141" placeholder="write your comment here"></textarea><br>
-        <button type="submit" name="new-post-submit">cluck!</button>
+        <button class="submit-post" type="submit" name="new-post-submit">cluck!</button>
       </form>
     </div>
 

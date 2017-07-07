@@ -20,6 +20,22 @@ li {
  list-style: none;
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+
+/*_________________________*/
+
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+}
+
 .nav-bar {
   height: 50px;
   box-shadow: 2px 0px 5px 7px lightgrey;
@@ -31,12 +47,15 @@ li {
   margin-top: 10px;
 }
 
+.nav-item a{
+  z-index: 2;
+}
+
 .big-box {
   position: relative;
   z-index: 2;
   width: 100%;
   height: 500px;
-  /*margin: 10px 0px 0px 0px;*/
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
@@ -168,7 +187,7 @@ li h3 {
 }
 
 .login input, .new-user-form input {
-  border-bottom: 2px solid black;
+  border-bottom: solid 2px lightgrey;
   font-size: 20px;
   padding: 5px 10px;
   height: 40px;
@@ -188,6 +207,39 @@ li h3 {
 .login-password {
   margin: 10px;
 }
+
+#newpost {
+  margin: 20px;
+}
+
+#newpost h3 {
+
+}
+
+.newpost-title {
+  margin: 30px;
+}
+
+.title-input {
+  border-bottom: solid 2px lightgrey;
+  font-size: 20px;
+  padding-left: 15px;
+}
+
+.body-input {
+  margin: 0px 30px;
+  border: solid 2px lightgrey;
+  height: 60px;
+  padding: 15px;
+  font-size: 20px;
+}
+
+.submit-post {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+}
+
 /*
 .posts{
   width: 100%;
