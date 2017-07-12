@@ -78,6 +78,10 @@ app.use(morgan('dev'));
 app.use(routes);
 
 
-app.listen(8080, function(req, res){
-  console.log("Server running, listening on port 8080. CRUSH IT!!!");
-})
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
+
+// app.listen(8080, function(req, res){
+//   console.log("Server running, listening on port 8080. CRUSH IT!!!");
+// })
