@@ -28,57 +28,10 @@ app.use(bodyParser.urlencoded({ extended : false }));
 app.use(validator());
 app.use(morgan('dev'));
 
-
-
-//_________________________________________________________________________
-
-// models.user.findOne(
-//   {
-//   where: {id : 1}
-//   }
-//     ).then(function(user){
-//           models.user.name = "Petunia";
-//           console.log(models.user.name);
-// })
-
-// models.user.findById(1).then(function(user){
-//   const name = models.user.build({
-//     name: "Petunia"
-//   })
-//   name.save();
-// })
-
-
-// const like = models.like.build({
-//   userId: 3,
-//   postId: 1
-// })
-//
-// like.save()
-
-
-//_________________________________________________________________________
-
-//finds a like and its associated comment
-// models.like.findOne({
-//   include: [
-//     {
-//       model: models.post,
-//       as: 'post'
-//     }
-//   ]
-//     }).then(function(like){
-//         console.log(like);
-// })
-
-
-
-
-
 app.use(routes);
 
-
-app.listen(process.env.PORT || 3000, function(){
+app.set('port', (process.env.PORT || 5000)
+app.listen(app.get('port'), function() {
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
 
