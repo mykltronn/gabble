@@ -17,7 +17,7 @@
     "username": "not_real",
     "password": "password",
     "database": "postgresql-aerodynamic-13506",
-    "host": "127.0.0.1",
+    "host": "db",
     "dialect": "postgres"
   }
 }
