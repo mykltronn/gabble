@@ -1,4 +1,4 @@
-// current working problem line 60 routes.js -- visit http://docs.sequelizejs.com/manual/tutorial/querying.html   and see "Order" section to check on current trajectory...... or https://stackoverflow.com/questions/36259532/sequelize-findall-sort-order-in-nodejs
+
 
 const express = require('express');
 const models = require("./models");
@@ -46,7 +46,7 @@ function authenticate(req, res, username, pass, callback){
 
 
 
-//_________________________________________________________________________
+//===================================
 //            routes
 
 // root
@@ -71,25 +71,6 @@ router.get('/', function(req, res){
           }]
         }]
     }).then(function(userInfo){
-      console.log(" v v v v               v       v            v v v v ");
-      console.log(" v v v v                v     v             v v v v ");
-      console.log(" v v v v                 v   v              v v v v ");
-      console.log(" v v v v                  v v               v v v v ");
-      console.log(" v v v v                   v                v v v v ");
-      console.log(" v v v v here's the info you're looking for v v v v ");
-      console.log(req.body.postBody);
-      // console.log(userInfo);
-
-      // for(i=0; i < userInfo.length; i++){
-      //   console.log("number of posts by user: " + userInfo[i].posts.length);
-      //   for(j=0; j < userInfo[i].posts.length; j++){
-      //     console.log("likes per post!!: " + userInfo[i].posts[j].likes.length);
-      //   }
-      // }
-
-      // here's the sticky bit. Line 126 successfully logs to postId of the post that the delete button should be deleting, but I want the DELETE button to only display if that post belogns to activeUser. So somehow I have to compare activeUser against the owner of whichever post itteration is being displayed in index. The problem is, that loop only exists in mustache form! Not here! As far as I know the only way I can compare a value inside this file against someting dynamically generated client side is by taking a user POST and parsing the body for a form... maybe I should read bodyparser documentation to see if there's more it can do. --- after reading a BIT of bodyparser docs it looks like almost any part of the body can be parsed, but it seems to come particularly from a POST... I'll have to test if this is true. The only question then, is how do I idenfity the part of req.body I want to select? req.body.classname even? Because then I can select the value of <li>{{name}}</li>.
-      // it's the same problem with the likes number.
-
 
       models.user.findById(req.session.activeUser).then(function(user){
 
@@ -115,25 +96,14 @@ router.get('/', function(req, res){
         }
       })
     })
-  /*}
-  else {
-    console.log("user redirected to login: lack of credentials");
-    res.redirect('/login')
-  } */
 })
 
-// need to add validation here
-// -- user can't like same post more than once
-
-// user posts new comment or like
 router.post('/', function(req, res){
   console.log("user POSTs to '/' ");
 
   // if there is a "like submission" then run this
   if(req.body.postItteration){
     console.log('...and POSTs a new like');
-
-    // needing to validate likes
 
     console.log("like added by userId " + req.session.activeUser + ", to postId " + req.body.postItteration);
 
@@ -201,10 +171,6 @@ router.post('/', function(req, res){
 
 // user visits or is redirected to login
 router.get('/login', function(req, res){
-  console.log('user GETs login');
-
-  /* if I had a cookie for the user, here I would include an if/else
-    that checked if the user had a username and password*/
 
   res.render('login');
 
