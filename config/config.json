@@ -14,8 +14,9 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "not_real",
-    "password": "password",
+    "use_env_variable": "DATABASE_URL",
+    "username": "Mykltronn",
+    "password": null,
     "database": "postgresql-aerodynamic-13506",
     "host": "db",
     "dialect": "postgres"
