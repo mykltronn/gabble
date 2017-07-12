@@ -245,6 +245,7 @@ router.post('/newuser', function(req, res){
       })
       newUser.save();
       req.session.authenticated = true;
+      res.redirect('/');
     }
     else {
       req.session.passErr = "passwords do not match!"

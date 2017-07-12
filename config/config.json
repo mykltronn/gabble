@@ -19,6 +19,6 @@
     "password": null,
     "database": "postgresql-aerodynamic-13506",
     "host": "db",
-    "dialect": "postgres"
+    "dialect": "postgres"a
   }
 }
